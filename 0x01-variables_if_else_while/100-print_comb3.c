@@ -10,9 +10,8 @@ int main(void)
 	int i;
 	int j;
 	int n;
-	
-	n ='1';
 
+	n = '1';
 	for (i = '0'; i <= '9'; i++)
 	{
 		for (j = n; j <= '9'; j++)
