@@ -14,7 +14,7 @@ int main(void)
 	n = 1;
 
 	for (i = 0; i <= 99; i++)
-	{	
+	{
 		for (j = n; j <= 99; j++)
 		{
 			putchar((i / 10) + '0');
