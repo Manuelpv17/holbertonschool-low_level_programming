@@ -3,7 +3,6 @@
 /**
  * main - entry point
  * Return: 0
-7540113804746346429
  */
 int main(void)
 {
@@ -21,12 +20,11 @@ int main(void)
 		a = b;
 		b = c;
 	}
-
 		a1 = a / 100000000;
 		a2 = a % 100000000;
 		b1 = b / 100000000;
 		b2 = b % 100000000;
-	
+
 	for (i = 89; i < 96; i++)
 	{
 		c1 = a1 + b1;
@@ -41,9 +39,8 @@ int main(void)
 		a2 = b2;
 		b1 = c1;
 		b2 = c2;
-
 	}
-	
+
 	printf("\n");
 	return (0);
 }
