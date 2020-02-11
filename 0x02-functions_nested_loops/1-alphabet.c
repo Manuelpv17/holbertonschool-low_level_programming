@@ -1,5 +1,11 @@
 #include "holberton.h"
 
+/**
+ * print_alphabet - print alphabet
+ * @void: First operand
+ *
+ *
+ */
 void print_alphabet(void)
 {
 	int i;
