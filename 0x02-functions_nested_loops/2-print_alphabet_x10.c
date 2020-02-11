@@ -1,11 +1,16 @@
 #include "holberton.h"
 
+/**
+  *print_alphabet_x10 - print alphabet x 10
+  *@void
+  *
+  */
 void print_alphabet_x10(void)
-{	
+{
 	int i;
 	int j;
 	char alp[26] = "abcdefghijklmnopqrstuvwxyz";
-	
+
 	for (j = 0; j < 10; j++)
 	{
 		for (i = 0; i < 26; i++)
@@ -14,5 +19,4 @@ void print_alphabet_x10(void)
 		}
 		_putchar('\n');
 	}
-	return;
 }
