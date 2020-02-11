@@ -1,5 +1,10 @@
 #include "holberton.h"
 
+/**
+  *_isalpha - alpha
+  *@c: Int
+  *Return: is alpha?
+  */
 int _isalpha(int c)
 {
 	int i;
@@ -9,7 +14,7 @@ int _isalpha(int c)
 	{
 		if (alp[i] == c)
 		{
-		return(1);
+		return (1);
 		}
 	}
 	return (0);
