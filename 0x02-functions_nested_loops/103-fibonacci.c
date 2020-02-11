@@ -11,7 +11,7 @@ int main(void)
 	long int a = 1;
 	long int b = 2;
 	long int c;
-	long int cont = 3;
+	long int cont = 2;
 
 	for (i = 0; i < 48; i++)
 	{
