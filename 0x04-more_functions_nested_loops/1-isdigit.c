@@ -1,9 +1,9 @@
 #include "holberton.h"
 
 /**
- * _isupper - Function
+ * _isdigit - Function
  * @c: Int
- * Return: isupper
+ * Return: Out
  */
 int _isdigit(int c)
 {
