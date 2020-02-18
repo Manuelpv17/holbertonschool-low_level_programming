@@ -1,6 +1,4 @@
 #include "holberton.h"
-#include <stdio.h>
-
 /**
  * _atoi - Function
  * @s: Pointer
@@ -18,7 +16,7 @@ int _atoi(char *s)
 	{
 		if (p == 0 && s[i] == '-')
 		{
-			y = -y;
+			y = -1 * y;
 		}
 		if ((s[i] <= '9' && s[i] >= '0') && (p != 2))
 		{
