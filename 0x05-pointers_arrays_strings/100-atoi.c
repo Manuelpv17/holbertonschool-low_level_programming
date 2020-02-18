@@ -27,5 +27,5 @@ int _atoi(char *s)
 			break;
 		}
 	}
-	return (n * i);
+	return (n * y);
 }
