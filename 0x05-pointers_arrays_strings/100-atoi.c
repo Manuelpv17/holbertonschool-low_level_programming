@@ -17,15 +17,15 @@ int _atoi(char *s)
 		if (p == 0 && s[i] == '-')
 		{
 			y = -1 * y;
-		} else if ((s[i] <= '9' && s[i] >= '0') && ((p == 0) || (p == 1)))
+		} else if ((s[i] <= '9' && s[i] >= '0') && (p == 0 || p == 1))
 		{
 			n = n * nc + (s[i] - '0');
 			nc =  10;
 			p = 1;
 		} else if (p == 1)
 		{
-			p = 2;
+			break;
 		}
 	}
-	return (n * y);
+	return (n * i);
 }
