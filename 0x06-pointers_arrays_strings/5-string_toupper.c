@@ -3,7 +3,7 @@
 /**
  * string_toupper- Change to upper case
  * @a: String
- *
+ * Return: Pointer
  */
 
 char *string_toupper(char *a)
