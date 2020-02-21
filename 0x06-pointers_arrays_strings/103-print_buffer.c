@@ -38,4 +38,8 @@ void print_buffer(char *b, int size)
 		a = a + 10;
 		printf("\n");
 	}
+	if (size <= 0)
+	{
+		printf("\n");
+	}
 }
