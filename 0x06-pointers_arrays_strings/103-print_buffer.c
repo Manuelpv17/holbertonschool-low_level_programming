@@ -21,7 +21,7 @@ void print_buffer(char *b, int size)
 		}
 		for (k = a; k < a + 10; k++)
 		{
-			if (b[k] > 32)
+			if (b[k] >= 32)
 				printf("%c", b[k]);
 			else
 				printf(".");
