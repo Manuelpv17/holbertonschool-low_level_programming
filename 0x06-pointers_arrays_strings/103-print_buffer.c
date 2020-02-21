@@ -12,12 +12,12 @@ void print_buffer(char *b, int size)
 	int i, j, k;
 	int a = 0;
 
-	for (i = 0; i < size / 10; i = i + 1)
+	for (i = 0; i <= size / 10; i = i + 1)
 	{
-		printf("%08x: ", i);
+		printf("%08x: ", a);
 		for (j = a; j < a + 10; j = j + 2)
 		{
-			printf("%x%x ", b[j], b[j + 2]);
+			printf("%x%x ", b[j], b[j + 1]);
 		}
 		for (k = a; k < a + 10; k++)
 		{
