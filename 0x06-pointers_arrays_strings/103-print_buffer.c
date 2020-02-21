@@ -18,9 +18,10 @@ void print_buffer(char *b, int size)
 		for (j = a; j < a + 10; j = j + 2)
 		{
 			if (j < size)
-			printf("%02x%02x ", b[j], b[j + 1]);
+				printf("%02x%02x ", b[j], b[j + 1]);
 			else
-			printf("     ");
+				printf("   ");
+
 		}
 		for (k = a; k < a + 10; k++)
 		{
@@ -34,6 +35,5 @@ void print_buffer(char *b, int size)
 		}
 		a = a + 10;
 		printf("\n");
-	}
-	
+	}	
 }
