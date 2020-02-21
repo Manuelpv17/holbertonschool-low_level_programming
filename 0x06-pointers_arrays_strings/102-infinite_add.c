@@ -24,16 +24,19 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		i1 = i;
 	for (k = 0; k < i1; k++)
 	{
-		n = (n1[i - k - 1] - '0') + (n2[i - k - 1] - '0');
-		if ((n + c) >= 10)
+		n = 0;
+		if (i > k)
+			n = n + n1[i - k - 1] - '0';
+		if (j > k)
+			n = n + n2[j - k - 1] - '0';
+		n = n + c;
+		c = 0;
+		if (n > 9)
 		{
-			r[k] = ((n + c) % 10) + '0';
+			r[k] = ((n - 10) + '0');
 			c = 1;
 		} else
-		{
-			r[k] = (n + c) + '0';
-			c = 0;
-		}
+			r[k] = n + '0';
 	}
 	if (c == 1)
 	{
@@ -47,6 +50,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		r[l] = r[k - l - 1];
 		r[k - l - 1] = a;
 	}
+
 	r[k] = '\0';
 	if (k >= size_r)
 		return (0);
