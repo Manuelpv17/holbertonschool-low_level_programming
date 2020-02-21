@@ -9,14 +9,21 @@
 
 void print_buffer(char *b, int size)
 {
-	int i, j;
+	int i, j, k;
+	int a = 0;
 
-	for (i = 0; i < size; i = i + 1)
+	for (i = 0; i < size / 10; i = i + 1)
 	{
-		printf("%p ", &b[i]);
-		printf("%x%x ", b[i], b[i + 1]);
-		printf("%c\n", b[i]);
-
+		printf("%08x: ", i);
+		for (j = a; j < a + 10; j = j + 2)
+		{
+			printf("%x%x ", b[j], b[j + 2]);
+		}
+		for (k = a; k < a + 10; k++)
+		{
+			printf("%c", b[k]);
+		}
+		a = a + 10;
+		printf("\n");
 	}
-	printf("\n");
 }
