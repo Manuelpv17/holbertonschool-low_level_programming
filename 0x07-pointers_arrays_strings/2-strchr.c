@@ -20,6 +20,6 @@ char *_strchr(char *s, char c)
 			return (p);
 		}
 	}
-	p = &s[i];
+	p = &s[i + 1];
 	return (p);
 }
