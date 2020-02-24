@@ -10,7 +10,7 @@
 char *_strchr(char *s, char c)
 {
 	unsigned int i;
-	char *p = '\0';
+	char *p;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
@@ -18,9 +18,8 @@ char *_strchr(char *s, char c)
 		{
 			p = &s[i];
 			return (p);
-			
 		}
 	}
-	p = '\0';
+	p = &s[i];
 	return (p);
 }
