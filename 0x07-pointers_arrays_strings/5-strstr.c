@@ -21,13 +21,14 @@ char *_strstr(char *haystack, char *needle)
 
 	for (i = 0; haystack[i] != '\0'; i++)
 	{
-		if (haystack[i] == needle[n] && n < k)
-		{
-			n = n + 1;
-		} else if (n == k)
+		if (n == k)
 		{
 			p = &haystack[i - n];
 			return (p);
+		}
+		else if (haystack[i] == needle[n] && n < k)
+		{
+			n = n + 1;
 		} else
 			n = 0;
 	}
