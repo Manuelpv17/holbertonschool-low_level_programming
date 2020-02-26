@@ -1,6 +1,6 @@
 #include "holberton.h"
 
-int aux(long int, long int);
+int aux(int, int);
 
 /**
  * _sqrt_recursion - he natural square root of a number.
@@ -11,9 +11,7 @@ int _sqrt_recursion(int n)
 {
 	if (n < 0)
 		return (-1);
-	else if (n == 0)
-		return (0);
-	return (aux(n, n));
+	return (aux(n, 0));
 }
 
 /**
@@ -22,15 +20,15 @@ int _sqrt_recursion(int n)
  * @cont: a
  * Return: a
  */
-int aux(long int n, long int cont)
+int aux(int n, int cont)
 {
-	if (n == cont * cont)
+	if (n  == cont * cont)
 		return (cont);
-	else if (cont == 0)
+	else if (cont / 2 >  n)
 		return (-1);
-	else if (cont > 0)
-		cont = aux(n, cont - 1);
 
+	cont = aux(n, cont + 1);
+	
 	return (cont);
 }
 
