@@ -28,7 +28,7 @@ int aux(int n, int cont)
 		return (-1);
 
 	cont = aux(n, cont + 1);
-	
+
 	return (cont);
 }
 
