@@ -30,9 +30,6 @@ int wildcmp(char *s1, char *s2)
 	else if (s2[0] == '*' && s1[2] == s2[1])
 		c = wildcmp(&s1[2], &s2[1]);
 
-	else if (s2[0] == '*' && s1[1] == s2[1])
-		c = wildcmp(&s1[1], &s2[1]);
-
 	else if (s2[0] == '*' && s1[0] == s2[1])
 		c = wildcmp(&s1[0], &s2[1]);
 	else
