@@ -24,6 +24,21 @@ int wildcmp(char *s1, char *s2)
 	else if (s2[0] == '*' && s1[0] != s2[1])
 		c = wildcmp(&s1[1], &s2[0]);
 
+	else if (s2[0] == '*' && s1[9] == s2[1])
+		c = wildcmp(&s1[9], &s2[1]);
+
+	else if (s2[0] == '*' && s1[8] == s2[1])
+		c = wildcmp(&s1[8], &s2[1]);
+
+	else if (s2[0] == '*' && s1[7] == s2[1])
+		c = wildcmp(&s1[7], &s2[1]);
+
+	else if (s2[0] == '*' && s1[6] == s2[1])
+		c = wildcmp(&s1[6], &s2[1]);
+
+	else if (s2[0] == '*' && s1[10] == s2[1])
+		c = wildcmp(&s1[10], &s2[1]);
+
 	else if (s2[0] == '*' && s1[5] == s2[1])
 		c = wildcmp(&s1[5], &s2[1]);
 
