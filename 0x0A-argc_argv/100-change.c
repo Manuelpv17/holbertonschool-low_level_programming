@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "holberton.h"
+#include <stdlib.h>
 
 /**
  * main - prints the minimum number of coins to make change
@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	m  = _atoi(argv[1]);
+	m  = atoi(argv[1]);
 
 	for (; m > 0;)
 	{
