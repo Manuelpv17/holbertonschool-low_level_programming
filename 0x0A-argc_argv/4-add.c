@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "holberton.h"
+#include <stdlib.h>
+#include <ctype.h>
 
 /**
  * main - adds positive numbers
@@ -16,13 +17,13 @@ int main(int argc, char *argv[])
 	{
 		for (j = 0; argv[i][j] != '\0'; j++)
 		{
-			if (_isdigit(argv[i][j]) == 0)
+			if (isdigit(argv[i][j]) == 0)
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-	s += _atoi(argv[i]);
+	s += atoi(argv[i]);
 	}
 
 	printf("%d\n", s);
