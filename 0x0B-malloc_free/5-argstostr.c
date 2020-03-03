@@ -1,4 +1,3 @@
-#include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -24,12 +23,10 @@ char *argstostr(int ac, char **av)
 			c++;
 		}
 	}
-
 	p = malloc((sizeof(char) * c) + 1);
 
 	if (p == NULL)
 		return (NULL);
-
 	c = 0;
 	for (i = 0; i < ac; i++)
 	{
@@ -38,10 +35,14 @@ char *argstostr(int ac, char **av)
 			p[c] = av[i][j];
 			c++;
 		}
+	if (i < ac - 1)
+	{
+		p[c] = ' ';
+		c++;
+	}
 		p[c] = '\n';
 		c++;
 	}
 	p[c] = '\0';
-
 	return (p);
 }
