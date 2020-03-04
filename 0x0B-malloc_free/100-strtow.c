@@ -4,17 +4,49 @@
 
 /**
  * strtow - splits a string into words
- * @grid: 2 dimensional array
- * Return: pointer to an array of strings
+ * @str: Array
+ * Return: pointer to pointers of strings
  */
 char **strtow(char *str)
-{
-	char **p;
-	int i;
-	
-	for (i = 0; str[i] != 1; i++)
-	{
-	}
+{	char **p = NULL;
+	int i, j, k, c, a, c2, c3;
 
-	return (p);
+	c = c2 = c3 = a = 0;
+	if (str == NULL || str == "")
+		return (NULL);
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i - 1] == ' ' && str[i] != ' ' && str[i] != '\0')
+			c++;
+	}
+	p = malloc(sizeof(char *) * c);
+	if (p == NULL)
+		return (NULL);
+
+	for (i = 0; str[i] != '\0'; i++)
+	{
+		if (str[i] != ' ' && str[i] != '\0')
+		{
+			c2++;
+			a = 1;
+		}
+		else if (a == 1 && str[i] == ' ')
+		{
+			p[c3] = malloc(sizeof(char) * c2 + 1);
+				if (p[c3] == NULL)
+				{
+					for (k = 0; k < c3; k++)
+						free(p[k]);
+					free(p);
+					return (NULL);
+				}
+
+			for (k = 0; k < c2; k++)
+			{
+				p[c3][k] = str[i - c2 + k];
+			} p[c3][k] = '\0';
+			c3++;
+			a = c2 = 0;
+		}
+	}	return (p);
 }
