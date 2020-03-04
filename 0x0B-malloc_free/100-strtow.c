@@ -19,7 +19,7 @@ char **strtow(char *str)
 		if (str[i - 1] == ' ' && str[i] != ' ' && str[i] != '\0')
 			c++;
 	}
-	p = malloc(sizeof(char *) * c);
+	p = malloc(sizeof(char *) * c + 1);
 	if (p == NULL)
 		return (NULL);
 
