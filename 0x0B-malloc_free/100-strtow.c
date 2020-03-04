@@ -20,7 +20,7 @@ char **strtow(char *str)
 
 	nWords = count_words(str);
 
-	p = malloc(sizeof(char *) * nWords + 1);
+	p = malloc(sizeof(char *) * (nWords + 1));
 
 	if (p == NULL || nWords == 0)
 		return (NULL);
