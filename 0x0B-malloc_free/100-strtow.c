@@ -9,10 +9,10 @@
  */
 char **strtow(char *str)
 {	char **p = NULL;
-	int i, j, k, c, a, c2, c3;
+	int i, k, c, a, c2, c3;
 
 	c = c2 = c3 = a = 0;
-	if (str == NULL || str == "")
+	if (str == NULL || str[0] == 0)
 		return (NULL);
 	for (i = 0; str[i] != '\0'; i++)
 	{
