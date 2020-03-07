@@ -3,8 +3,8 @@
 #include <stdio.h>
 
 
+void *_calloc(unsigned int nmemb, unsigned int size);
 char *infinite_add(char *n1, char *n2, char *r, int size_r);
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void _puts(char *str);
 int _strlen(char *s);
 
@@ -16,10 +16,7 @@ int _strlen(char *s);
 int main(int argc, char *argv[])
 {
 	char **p;
-	int i, j;
-	int len1;
-	int len2;
-	int  n;
+	int i, j, len1, len2, n, n1, aux_len;
 
 	if (argc != 3)
 	{
@@ -30,14 +27,19 @@ int main(int argc, char *argv[])
 	len1 = _strlen(argv[1]);
 	len2 = _strlen(argv[2]);
 
-	p = malloc(sizeof(char *) * 3);
+	if (len2 == 1)
+		aux_len = 1;
+	else
+		aux_len = len2 + 2;
+
+	p = malloc(sizeof(char *) * aux_len);
 	
 	if (p == NULL)
 		return ('\0');
 
-	for (i = 0; i < len1; i++)
+	for (i = 0; i < aux_len; i++)
 	{
-		p[i] = calloc(len2 + 1, sizeof(char));
+		p[i] = _calloc((len1 + len2),  sizeof(char));
 
 		if (p[i] == NULL)
 		{
@@ -47,33 +49,65 @@ int main(int argc, char *argv[])
 			return ('\0');
 		}
 	}
-
-	for (i = 0; i < len1; i++)
+	
+	for (i = 0; i < len1 + len2; i++)
 	{
-		for (j = 0; j < len2; j++)
+		p[len2][i] = '0';
+		p[len2 + 1][i] = '0';
+	}
+
+	for (i = 0; i < len2; i++)
+	{
+		for (j = 0; j < len2 + len1; j++)
 		{
-			if (i == 1 && j == 0)
-				p[i][j] = '0';
-				
+			if (j < len1)
+				n = ((argv[2][len2 - 1 - i] - '0') * (argv[1][len1 - 1 - j] - '0') + n1);
 			else
+				n = 0 + n1;
+
+			if (n > 9)
 			{
-				n = (argv[1][len1 -1 -j] - '0') * (argv[2][len2 - i - 1] - '0');
-				p[i][j] = n + '0';
-			}
+				n1 = n / 10;
+				n = n % 10;
+			} else
+				n1 = 0;
+
+			if (i == len2 - 1  && j > len1 + len2 - 1)
+				break;
+
+			if (i > j)
+				p[i][len1 + len2 - 1 - j] = '0';
+		
+			p[i][len1 + len2 - j - 1 - i] =  n + '0';
 		}
 	}
 
-	for (i = 0; i < len1; i++)
+
+	if (aux_len == 1)
 	{
-		for (j = 0; j < len2; j++)
+		for (j = 0; j < len1 + len2; j++)
+			p[len2 + 1][j] = p[0][j];
+	}
+	else
+	{
+		for (i = 0; i < len2; i++)
 		{
-			_putchar(p[i][j]);
+			p[len2 + 1] = infinite_add(p[i], p[len2], p[len2 + 1], len1 + len2 + 1);
+			for (j = 0; j < len1 + len2; j++)
+				p[len2][j] = p[len2 + 1][j];
+		}
+	}
+
+//	for (i = 0; i < aux_len; i++)
+//	{
+		for (j = 0; j < len1 + len2; j++)
+		{
+			_putchar(p[len2 +1][j]);
 		}
 		_putchar('\n');
-	}
-
+//	}
 	
-	for (j = 0; j < len1; j++)
+	for (j = 0; j < aux_len; j++)
 		free(p[j]);
 	free(p);
 	
@@ -110,52 +144,6 @@ void _puts(char *str)
 	}
 	_putchar('\n');
 }
-
-#include <stdlib.h>
-
-/**
- * _realloc - Reallocates a memory block
- * @ptr: Pointer to previous memory block
- * @old_size: Size in bytes of previous memory block
- * @new_size: Size in bytes of new memory block
- * Return: Pointer to address of new space
- */
-
-void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
-{
-	char *p = NULL;
-	char *p_old = NULL;
-	unsigned int i;
-
-	if (old_size == new_size)
-		return (ptr);
-
-	if (ptr == NULL)
-		old_size = 0;
-	else if (new_size == 0)
-	{
-		free(ptr);
-		return (NULL);
-	}
-
-	p = malloc(new_size);
-
-	if (p == NULL)
-	{
-		return (NULL);
-	}
-
-	p_old = ptr;
-
-	for (i = 0; i < old_size && i < new_size; i++)
-	{
-		p[i] = p_old[i];
-	}
-	free(ptr);
-
-	return (p);
-}
-
 
 
 /**
@@ -208,5 +196,35 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	if (k >= size_r)
 		return (0);
 	return (r);
+}
+
+
+/**
+ * _calloc - allocates memory for an array and fill with zero
+ * @nmemb: number of elements of the array
+ * @size: size of the elementes in the array
+ * Return: Pointer to address of new space
+ */
+void *_calloc(unsigned int nmemb, unsigned int size)
+{
+	char *p = NULL;
+	unsigned int i;
+
+	if (nmemb == 0 || size == 0)
+		return (NULL);
+
+	p = malloc(sizeof(char) * (size * nmemb));
+
+	if (p == NULL)
+	{
+		return (NULL);
+	}
+
+	for (i = 0; i < size * nmemb; i++)
+	{
+		p[i] = '\0';
+	}
+
+	return (p);
 }
 
