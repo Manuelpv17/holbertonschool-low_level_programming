@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+int _isdigit(int c);
 void *_calloc(unsigned int nmemb, unsigned int size);
 char *infinite_add(char *n1, char *n2, char *r, int size_r);
 void _puts(char *str);
@@ -23,17 +23,32 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-		puts("Error");
+		_puts("Error");
 		exit(98);
 	}
 
 	len1 = _strlen(argv[1]);
 	len2 = _strlen(argv[2]);
 
-	if (len2 == 1)
-		aux_len = 1;
-	else
-		aux_len = len2 + 2;
+	for (i = 0; i < len1; i++ )
+	{
+		if (_isdigit(argv[1][i]) != 1)
+		{
+			_puts("Error");
+			exit(98);	
+		}
+	}
+
+	for (i = 0; i < len2; i++ )
+	{
+		if (_isdigit(argv[2][i]) != 1)
+		{
+			_puts("Error");
+			exit(98);	
+		}
+	}
+
+	aux_len = len2 + 2;
 
 	p = malloc(sizeof(char *) * aux_len);
 
@@ -230,5 +245,18 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 	}
 
 	return (p);
+}
+/**
+ * _isdigit - Check for a digit from 0 to 9
+ * @c: Digit to check
+ * Return: 1 is a digit 0 to 9 - 0 is not
+ */
+int _isdigit(int c)
+{
+	if (c >= 48 && c <= 57)
+	{
+		return (1);
+	}
+	return (0);
 }
 
