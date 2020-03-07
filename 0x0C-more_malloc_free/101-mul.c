@@ -10,18 +10,21 @@ int _strlen(char *s);
 
 /**
  * main - multiplies two positive numbers
+ * @argc: Only 2 - error if not
+ * @argv: The two numbers to multiply
  * Return: 0 success
  */
 
 int main(int argc, char *argv[])
 {
 	char **p;
-	int i, j, len1, len2, n, n1, aux_len;
+	int i, j, len1, len2, n, aux_len;
+	int n1 = 0;
 
 	if (argc != 3)
 	{
 		puts("Error");
-		exit (98);
+		exit(98);
 	}
 
 	len1 = _strlen(argv[1]);
@@ -33,13 +36,13 @@ int main(int argc, char *argv[])
 		aux_len = len2 + 2;
 
 	p = malloc(sizeof(char *) * aux_len);
-	
+
 	if (p == NULL)
 		return ('\0');
 
 	for (i = 0; i < aux_len; i++)
 	{
-		p[i] = _calloc((len1 + len2),  sizeof(char));
+		p[i] = calloc((len1 + len2 + 1),  sizeof(char));
 
 		if (p[i] == NULL)
 		{
@@ -49,19 +52,24 @@ int main(int argc, char *argv[])
 			return ('\0');
 		}
 	}
-	
+
 	for (i = 0; i < len1 + len2; i++)
 	{
-		p[len2][i] = '0';
-		p[len2 + 1][i] = '0';
+		for (j = 0; j < aux_len; j++)
+		{
+			p[j][i] = '0';
+		}
 	}
 
 	for (i = 0; i < len2; i++)
 	{
 		for (j = 0; j < len2 + len1; j++)
 		{
+			if (j > len1 + len2 - i - 1)
+				break;
+
 			if (j < len1)
-				n = ((argv[2][len2 - 1 - i] - '0') * (argv[1][len1 - 1 - j] - '0') + n1);
+				n = (((argv[2][len2 - 1 - i] - '0') * (argv[1][len1 - 1 - j] - '0')) + n1);
 			else
 				n = 0 + n1;
 
@@ -72,12 +80,6 @@ int main(int argc, char *argv[])
 			} else
 				n1 = 0;
 
-			if (i == len2 - 1  && j > len1 + len2 - 1)
-				break;
-
-			if (i > j)
-				p[i][len1 + len2 - 1 - j] = '0';
-		
 			p[i][len1 + len2 - j - 1 - i] =  n + '0';
 		}
 	}
@@ -98,19 +100,21 @@ int main(int argc, char *argv[])
 		}
 	}
 
-//	for (i = 0; i < aux_len; i++)
-//	{
-		for (j = 0; j < len1 + len2; j++)
-		{
-			_putchar(p[len2 +1][j]);
-		}
-		_putchar('\n');
-//	}
-	
+
+	if (p[len2 + 1][0] == '0')
+		j = 1;
+	else
+		j = 0;
+	for (; j < len1 + len2; j++)
+	{
+		_putchar(p[len2 + 1][j]);
+	}
+	_putchar('\n');
+
 	for (j = 0; j < aux_len; j++)
 		free(p[j]);
 	free(p);
-	
+
 	return (0);
 }
 
