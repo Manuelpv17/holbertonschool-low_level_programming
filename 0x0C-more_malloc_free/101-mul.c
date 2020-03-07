@@ -30,21 +30,21 @@ int main(int argc, char *argv[])
 	len1 = _strlen(argv[1]);
 	len2 = _strlen(argv[2]);
 
-	for (i = 0; i < len1; i++ )
+	for (i = 0; i < len1; i++)
 	{
 		if (_isdigit(argv[1][i]) != 1)
 		{
 			_puts("Error");
-			exit(98);	
+			exit(98);
 		}
 	}
 
-	for (i = 0; i < len2; i++ )
+	for (i = 0; i < len2; i++)
 	{
 		if (_isdigit(argv[2][i]) != 1)
 		{
 			_puts("Error");
-			exit(98);	
+			exit(98);
 		}
 	}
 
@@ -116,10 +116,18 @@ int main(int argc, char *argv[])
 	}
 
 
-	if (p[len2 + 1][0] == '0')
-		j = 1;
-	else
-		j = 0;
+	for (i = 0; i < len1 + len2; i++)
+	{
+		if (p[len2 + 1][i] == '0')
+			j = i;
+		else
+		{
+			j = i;
+			break;
+		}
+
+	}
+
 	for (; j < len1 + len2; j++)
 	{
 		_putchar(p[len2 + 1][j]);
