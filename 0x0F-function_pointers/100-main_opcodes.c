@@ -6,6 +6,7 @@
  * main - prints the opcodes of its own main function.
  * @argc: Number of arguments - should be two
  * @argv: 1 - amount of opcodes to print
+ * Return: opcodes of its own main function
  */
 
 int main(int argc, char *argv[])
@@ -32,11 +33,11 @@ int main(int argc, char *argv[])
 
 		if (i == n - 1)
 		{
-			printf("\n");
 			break;
 		}
 		printf(" ");
 	}
 
+	printf("\n");
 	return (0);
 }
