@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+
+/**
+ * main - prints the opcodes of its own main function.
+ * @argc: Number of arguments - should be two
+ * @argv: 1 - amount of opcodes to print
+ */
+
 int main(int argc, char *argv[])
 {
 	char *p = (char *)main;
@@ -8,14 +15,14 @@ int main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		printf("Error");
+		printf("Error\n");
 		exit(1);
 	}
 	n = atoi(argv[1]);
 
 	if (n < 0)
 	{
-		printf("Error");
+		printf("Error\n");
 		exit(2);
 	}
 
