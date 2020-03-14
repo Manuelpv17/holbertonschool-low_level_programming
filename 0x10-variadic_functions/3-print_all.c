@@ -5,6 +5,7 @@ void charf(va_list);
 void integerf(va_list);
 void floatf(va_list);
 void stringf(va_list);
+void ex(va_list);
 
 /**
  * prints anything - prints anything
@@ -23,15 +24,18 @@ void print_all(const char * const format, ...)
 
 	while(format[i] != '\0')
 	{
-		decision(format[0])(unknow_list);
+		decision(format[i])(unknow_list);	 
+		printf(", ");
 		i++;
 	}
-
+	printf("\n");
 	va_end(unknow_list);
 }
 
 void (*decision(char d))(va_list)
 {
+	int i = 0;
+
 	types_t type1[] = 
 	{
 		{'c', charf}, 
@@ -41,17 +45,20 @@ void (*decision(char d))(va_list)
 		{'\0', NULL}
 	};
 
-	while (type1)
+	while (type1[i].type != '\0')
 	{
-		/* code */
+		if (type1[i].type == d)
+		{	
+			return(type1[i].f);
+		}
+		i++;
 	}
-	
-		return(type1[0].f);
-	
-
-	return(NULL);
+	return (ex);
 }
 
+void ex(va_list char_type)
+{
+}
 
 void charf(va_list char_type)
 {
@@ -60,15 +67,18 @@ void charf(va_list char_type)
 
 void integerf(va_list char_type)
 {
-	printf("%d ", va_arg(char_type, int));
+	printf("%d", va_arg(char_type, int));
 }
 
 void floatf(va_list char_type)
 {
-	printf("%f ", va_arg(char_type, double));
+	printf("%f", va_arg(char_type, double));
 }
 
 void stringf(va_list char_type)
 {
-	printf("%s ", va_arg(char_type, char *));
+	if (char_type == NULL)
+		printf("(nil)");
+	else
+	printf("%s", va_arg(char_type, char *));
 }
