@@ -6,10 +6,9 @@
  */
 void free_listint(listint_t *head)
 {
-	unsigned int i;
 	listint_t *aux_head = NULL;
 
-	for (i = 0; head != NULL; i++)
+	for (; head != NULL;)
 	{
 		aux_head = head;
 		head = head->next;
