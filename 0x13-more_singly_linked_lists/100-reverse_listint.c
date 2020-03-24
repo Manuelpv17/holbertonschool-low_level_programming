@@ -9,14 +9,10 @@
 listint_t *reverse_listint(listint_t **head)
 {
 	listint_t *aux1 = *head;
-	listint_t *aux2 = *head;
+	listint_t *aux2 = NULL;
 
 	if (head == NULL || *head == NULL)
 		return (NULL);
-
-	aux1 = aux1->next;
-	(*head)->next = NULL;
-	*head = aux1;
 
 	for (; (*head)->next != NULL;)
 	{
