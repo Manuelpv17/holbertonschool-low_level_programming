@@ -1,7 +1,5 @@
 #include "holberton.h"
 
-int _isdigit(int c);
-
 /**
  * binary_to_uint - converts a binary number to an unsigned int
  * @b: b is pointing to a string of 0 and 1 chars
@@ -17,7 +15,8 @@ unsigned int binary_to_uint(const char *b)
 		return (0);
 	for (i = 0; b[i] != '\0'; i++)
 	{
-		if (_isdigit(b[i]) != 1)
+		aux = b[i] - '0';
+		if (aux != 1 && aux != 0)
 			return (0);
 	}
 	i = i - 1;
@@ -32,18 +31,4 @@ unsigned int binary_to_uint(const char *b)
 	}
 
 	return (n);
-}
-
-/**
- * _isdigit - Check if digit is a number
- * @c: digit to check
- * Return: 1 if number, 0 if else
- */
-int _isdigit(int c)
-{
-	if (c >= 48 && c <= 57)
-	{
-		return (1);
-	}
-	return (0);
 }
