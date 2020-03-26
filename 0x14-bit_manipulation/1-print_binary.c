@@ -6,8 +6,8 @@
  */
 void print_binary(unsigned long int n)
 {
-	int i, j, k, k1;
-	int n_aux = n;
+	unsigned long int i, j, k, k1;
+	unsigned long int n_aux = n;
 	char num = '0';
 
 	if (n == 0)
