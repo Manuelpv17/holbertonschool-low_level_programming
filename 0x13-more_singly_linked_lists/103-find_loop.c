@@ -8,9 +8,9 @@
  */
 listint_t *find_listint_loop(listint_t *head)
 {
-	for (; head != NULL;)
+	for (; head != NULL && head->next != NULL;)
 	{
-		if (head - head->next > 0)
+		if ((head - head->next) > 0)
 			head = head->next;
 		else
 		{
