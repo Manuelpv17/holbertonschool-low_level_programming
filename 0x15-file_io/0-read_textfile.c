@@ -11,7 +11,7 @@
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t fdescrip, cont;
+	ssize_t fdescrip, cont, check;
 	char *p = NULL;
 
 	if (filename == NULL)
@@ -29,7 +29,9 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	if (cont == -1)
 		return (0);
 
-	write(1, p, cont);
+	check = write(1, p, cont);
+	if (check == -1)
+		return (0);
 
 	close(fdescrip);
 	free(p);
