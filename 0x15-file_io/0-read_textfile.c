@@ -27,11 +27,17 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	cont = read(fdescrip, p, letters);
 	if (cont == -1)
+	{
+		free(p);
 		return (0);
+	}
 
-	check = write(1, p, cont);
-	if (check == -1)
+	check = write(STDOUT_FILENO, p, cont);
+	if (cont == -1)
+	{
+		free(p);
 		return (0);
+	}
 
 	close(fdescrip);
 	free(p);
