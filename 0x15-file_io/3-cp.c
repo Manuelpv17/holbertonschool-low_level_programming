@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	ssize_t file_to, file_from, check, num = 1024;
+	int file_to, file_from, check, num = 1024;
 	char buffer[1024];
 
 	if (argc != 3)
@@ -51,13 +51,13 @@ int main(int argc, char *argv[])
 	check = close(file_from);
 	if (check == -1)
 	{
-		dprintf(2, "Error: Can't close fd %ld\n", file_from);
+		dprintf(2, "Error: Can't close fd %d\n", file_from);
 		exit(100);
 	}
 	check = close(file_to);
 	if (check == -1)
 	{
-		dprintf(2, "Error: Can't close fd %ld\n", file_to);
+		dprintf(2, "Error: Can't close fd %d\n", file_to);
 		exit(100);
 	}
 	return (0);
