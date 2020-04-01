@@ -11,7 +11,7 @@
 
 int main(int argc, char *argv[])
 {
-	ssize_t file_to, file_from, check, num = 1;
+	ssize_t file_to, file_from, check, num;
 	char *buffer = NULL;
 
 	if (argc != 3)
@@ -36,7 +36,18 @@ int main(int argc, char *argv[])
 		return (-1);
 
 	num = read(file_from, buffer, 5024);
-	write(file_to, buffer, num);
+	if (file_from == -1)
+	{
+		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+
+	check = write(file_to, buffer, num);
+	if (check == -1)
+	{
+		dprintf(2, "Error: Can't write to %s\n", argv[2]);
+		exit(99);
+	}
 
 	check = close(file_from);
 	if (check == -1)
