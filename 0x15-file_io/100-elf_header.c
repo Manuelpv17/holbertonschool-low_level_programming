@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 {
 	Elf64_Ehdr the_elf_file;
-	int fdes;
+	int fdes, i;
 
 	if (argc != 2)
 	{
@@ -44,6 +44,9 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Not valid ELF\n");
 		exit(98);
 	}
+	printf("Magic: ");
+	for (i = 0; i < 16; i++)
+		printf("%02x ", the_elf_file.e_ident[i]);
 	close(fdes);
 	return (0);
 }
