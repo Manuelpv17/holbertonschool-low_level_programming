@@ -12,7 +12,7 @@
 int main(int argc, char *argv[])
 {
 	ssize_t file_to, file_from, check, num = 1024;
-	char *buffer = NULL;
+	char buffer[1024];
 
 	if (argc != 3)
 	{
@@ -31,16 +31,12 @@ int main(int argc, char *argv[])
 		dprintf(2, "Error: Can't write to %s\n", argv[2]);
 		exit(99);
 	}
-	buffer = malloc(sizeof(char) * 1024);
-	if (buffer == NULL)
-		return (-1);
 
 	while (num == 1024)
 	{
 		num = read(file_from, buffer, 1024);
 		if (num == -1)
 		{
-			free(buffer);
 			dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 			exit(98);
 		}
@@ -48,7 +44,6 @@ int main(int argc, char *argv[])
 		check = write(file_to, buffer, num);
 		if (check == -1)
 		{
-			free(buffer);
 			dprintf(2, "Error: Can't write to %s\n", argv[2]);
 			exit(99);
 		}
@@ -56,17 +51,14 @@ int main(int argc, char *argv[])
 	check = close(file_from);
 	if (check == -1)
 	{
-		free(buffer);
 		dprintf(2, "Error: Can't close fd %ld\n", file_from);
 		exit(100);
 	}
 	check = close(file_to);
 	if (check == -1)
 	{
-		free(buffer);
 		dprintf(2, "Error: Can't close fd %ld\n", file_to);
 		exit(100);
 	}
-	free(buffer);
 	return (0);
 }
