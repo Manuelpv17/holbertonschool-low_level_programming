@@ -34,11 +34,10 @@ int main(int argc, char *argv[])
 	buffer = malloc(sizeof(char) * 1024);
 	if (buffer == NULL)
 		return (-1);
-	while (num != 0)
-	{
-		num = read(file_from, buffer, 1024);
-		write(file_to, buffer, num);
-	}
+
+	num = read(file_from, buffer, 1024);
+	write(file_to, buffer, num);
+
 	check = close(file_from);
 	if (check == -1)
 	{
