@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 	if (buffer == NULL)
 		return (-1);
 
-	num = read(file_from, buffer, 1024);
+	num = read(file_from, buffer, 5024);
 	write(file_to, buffer, num);
 
 	check = close(file_from);
