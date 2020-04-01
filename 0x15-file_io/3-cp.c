@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
 		return (-1);
 
 	num = read(file_from, buffer, 5024);
-	if (file_from == -1)
+	if (num == -1)
 	{
 		dprintf(2, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
