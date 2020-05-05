@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include "lists.h"
 
+void pback(dlistint_t *head);
+
 /**
  * main - check the code for Holberton School students.
  *
@@ -18,51 +20,30 @@ int main(void)
 	add_dnodeint_end(&head, 2);
 	add_dnodeint_end(&head, 3);
 	add_dnodeint_end(&head, 4);
-	add_dnodeint_end(&head, 98);
-	add_dnodeint_end(&head, 402);
-	add_dnodeint_end(&head, 1024);
+	add_dnodeint_end(&head, 5);
+	add_dnodeint_end(&head, 6);
+	add_dnodeint_end(&head, 7);
 	print_dlistint(head);
+	printf("REVES\n");
+	pback(head);
 	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 5);
+	delete_dnodeint_at_index(&head, 4);
 	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	printf("-----------------\n");
-	delete_dnodeint_at_index(&head, 0);
-	print_dlistint(head);
+	printf("REVES\n");
+	pback(head);
+
 	return (0);
+}
+
+void pback(dlistint_t *head)
+{
+	dlistint_t *temp = head;
+
+	while (temp->next != NULL)
+		temp = temp->next;
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->prev;
+	}
 }
