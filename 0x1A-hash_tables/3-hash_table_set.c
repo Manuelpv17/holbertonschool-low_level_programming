@@ -1,11 +1,9 @@
 #include "hash_tables.h"
 
-hash_node_t *add_nodeint(hash_node_t **head, const char *key, const char *value);
-
 /**
  * hash_table_set - adds an element to the hash table
  * @ht: hash table you want to add or update the key/value
- * @key: key is the key. key can not be an empty string
+ * @key: the key. key can not be an empty string
  * @value: value is the value associated with the key
  * value must be duplicated. value can be an empty string
  * Return: 1 if it succeeded, 0 otherwise
@@ -30,11 +28,12 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 /**
  * add_nodeint - adds a new node at the beginning of a hash_node_t list
  * @head: pointer to the head of list
+ * @key: the key
  * @value: value to be add
  * Return: New head position
  */
-
-hash_node_t *add_nodeint(hash_node_t **head, const char *key, const char *value)
+hash_node_t *add_nodeint(hash_node_t **head,
+						 const char *key, const char *value)
 {
 	hash_node_t *p_new_element = NULL;
 
