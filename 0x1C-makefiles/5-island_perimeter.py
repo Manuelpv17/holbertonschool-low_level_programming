@@ -1,11 +1,11 @@
 #!/usr/bin/python3
+""" perimeter of the island """
 
 
 def island_perimeter(grid):
+    """ Find and return perimeter"""
     len_x = len(grid[0])
     len_y = len(grid)
-    # print(len_x)
-    # print(len_y)
     perimeter = 0
     for y in range(len_y):
         for x in range(len_x):
