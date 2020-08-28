@@ -30,10 +30,10 @@ int jump_search(int *array, size_t size, int value)
 		left = right;
 		right += sqrt(size);
 
+		printf("Value checked array[%ld] = [%d]\n", left, array[left]);
+
 		if (right > size - 1)
 			break;
-
-		printf("Value checked array[%ld] = [%d]\n", left, array[left]);
 
 		if (right > size - 1)
 			n = size - 1;
